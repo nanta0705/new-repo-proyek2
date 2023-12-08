@@ -2,7 +2,7 @@
 @section('content')
 <div class="page-header">
     <div>
-        <h1 class="page-title">Dashboard 01</h1>
+        <h1 class="page-title">Katalog Makeup</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0);">Dashboard</a></li>
             <li class="breadcrumb-item active" aria-current="page">Katalog Makeup</li>
@@ -10,7 +10,7 @@
     </div>
     <div class="ms-auto pageheader-btn">
         <a class="btn btn-primary" data-bs-target="#modaldemo1" data-bs-toggle="modal" href=""><i
-            class="fa fa-plus">Tambah Data</i></a>
+            class="fa fa-plus"></i>Tambah Data</a>
     </div>
 </div>
 <!-- PAGE-HEADER END -->
@@ -18,7 +18,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Makeup DataTable</h3>
+                <h3 class="card-title">Makeup Table</h3>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -39,11 +39,11 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$data->name}}</td>
                                 <td>{{$data->description}}</td>
-                                <td>{{'Rp', number_format($data->price, 0, ', ', ',')}}</td>
+                                <td>{{'Rp'.  number_format($data->price, 0,',', '.')}}</td>
                                 <td><img src="{{asset(''). $data->image}}" style="width:60px;height:60"></td>
                                 <td class="text-center">
                                     <a class="btn btn-warning" data-bs-target="#modaldemo2{{$data->id}}" data-bs-toggle="modal" href=""><i class="fa fa-edit"></i></a>
-                                    <form method="POST" action="{{url('/admin/katalog_makeup/'.$data->id)}}">
+                                    <form method="POST" action="{{url('/owner/katalog_makeup/'.$data->id)}}">
                                         @method('delete')
                                         @csrf
                                     <button type="submit" onclick="return confirm('apakah data ingin dihapus')"
@@ -70,13 +70,13 @@
             <div class="modal-header">
                 <h6 class="modal-title">Tambah Data Makeup</h6><button aria-label="Close" class="btn-close" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>
             </div>
-            <form action="{{url('/owner/katalog_makeup')}}" method="post">
+            <form action="{{ url('/owner/katalog_makeup') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label class="form-label">nama makeup</label>
-                            <input class="form-control  mb-4 is-valid state-valid" placeholder="Masukan nama makeup" required="" type="text" name="nama">
+                            <input class="form-control  mb-4 is-valid state-valid" placeholder="Masukan nama makeup" required="" type="text" name="name">
                         </div>
                     </div>
                     <div class="col-lg-12">

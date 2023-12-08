@@ -28,7 +28,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="{{url('/autentikasi')}}images/img-01.png" alt="IMG">
+					<img src="{{ url('/autentikasi') }}/images/img-01.png" alt="IMG">
 				</div>
 
 				<form action="{{route('login')}}" method="POST" class="login100-form validate-form">
@@ -42,7 +42,7 @@
 						<input class="input100" type="text" name="username" placeholder="username">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
+							<i class="fa fa-user" aria-hidden="true"></i>
 						</span>
 					</div>
 

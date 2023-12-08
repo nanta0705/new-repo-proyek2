@@ -18,30 +18,42 @@ class KatalogMakeupController extends Controller
 
     // please make three function for store, update and delete
 
-    public function store(request $request)
+    public function store(Request $request)
     {
         try {
             $request->validate([
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
 
-            $ImageName = time() . '.' . $request->image->extention();
-
+            $ImageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('katalog_makeup_image'), $ImageName);
 
             KatalogMakeup::create([
                 'name' => $request->name,
                 'description' => $request->description,
                 'price' => $request->price,
-                'image' => '/katalog_makeup_image' . $ImageName,
+                'image' => 'katalog_makeup_image/' . $ImageName,
                 'user_id' => Auth::user()->id,
 
             ]);
-
             Alert::success('Data Makeup Berhasil Ditambahkan');
             return back();
         } catch (\Exception $e) {
             Alert::error('Data Makeup Gagal Disimpan!' . $e->getmessage());
+            return back();
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $makeup = KatalogMakeup::where('id', $id)->first();
+            $makeup->delete();
+
+            Alert::success('Data Berhasil Dihapus');
+            return back();
+        } catch (\Exception $e) {
+            Alert::error('Data Gagal Dihapus');
             return back();
         }
     }
