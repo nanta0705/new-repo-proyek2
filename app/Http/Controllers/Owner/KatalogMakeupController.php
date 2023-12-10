@@ -7,6 +7,7 @@ use App\Models\Owner\KatalogMakeup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\File;
 
 class KatalogMakeupController extends Controller
 {
@@ -16,7 +17,6 @@ class KatalogMakeupController extends Controller
         return view('owner.katalog_makeup.index', compact('katalog_makeup'));
     }
 
-    // please make three function for store, update and delete
 
     public function store(Request $request)
     {
@@ -43,6 +43,43 @@ class KatalogMakeupController extends Controller
             return back();
         }
     }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $request->validate([
+                'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Use 'sometimes' to make image optional
+            ]);
+
+            $makeup = KatalogMakeup::findOrFail($id);
+            $makeup->name = $request->name;
+            $makeup->description = $request->description;
+            $makeup->price = $request->price;
+
+            if ($request->hasFile('image')) {
+                // Delete old image if it exists
+                if (File::exists(public_path($makeup->image))) {
+                    File::delete(public_path($makeup->image));
+                }
+
+                // Upload new image
+                $imageName = time() . '.' . $request->image->extension();
+                $request->image->move(public_path('katalog_makeup_image'), $imageName);
+                $makeup->image = 'katalog_makeup_image/' . $imageName;
+            }
+
+            $makeup->save();
+
+            // Add success alert
+            Alert::success('Data Berhasil Diubah');
+            return back();
+        } catch (\Exception $e) {
+            // Add error alert
+            Alert::error('Data Gagal Diubah!');
+            return back();
+        }
+    }
+
 
     public function destroy($id)
     {

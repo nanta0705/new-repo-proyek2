@@ -108,4 +108,61 @@
     </div>
 </div>
 {{-- End Tambah Modal --}}
+
+@foreach ($katalog_makeup as $edit)
+
+
+<div class="modal fade" id="modaldemo2{{$edit->id}}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-content-demo">
+            <div class="modal-header">
+                <h6 class="modal-title">Edit</h6><button aria-label="Close" class="btn-close" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form action="{{url('/owner/katalog_makeup/' .$edit->id)}}" method="post"
+                enctype="multipart/form-data">
+                @csrf
+                @method('put')
+                <div class="modal-body">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label class="form-label">name</label>
+                            <input value="{{$edit->name}}" class="form-control  mb-4 is-valid state-valid" placeholder="Masukan Nama" required="" type="text" name="name">
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label class="form-label">Deskripsi</label>
+                            <input value="{{$edit->description}}" class="form-control  mb-4 is-valid state-valid" placeholder="Masukan deskripsi" required="" type="text" name="description">
+                        </div>
+
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label class="form-label">Harga</label>
+                            <input value="{{$edit->price}}" class="form-control  mb-4 is-valid state-valid" placeholder="Masukan " required="" type="number" name="price">
+                        </div>
+
+                    </div>
+                    <div class="col-lg-12">
+                        <div class ="form-group">
+                            <label for="image">Gambar</label>
+                            @if ($edit->image)
+                                <p>Nama file: {{ $edit->image }}</p>
+                                <img src="{{ asset(''. $edit->image )}}" alt="Current Image"
+                                    style="max-height: 100px;">
+                            @else
+                                <p>No image available</p>
+                            @endif
+                            <input type="file" class="form-control" name="image" id="image">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit">Save changes</button> <button class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
 @endsection

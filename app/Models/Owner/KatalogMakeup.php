@@ -11,7 +11,7 @@ class KatalogMakeup extends Model
     use HasFactory;
 
 
-    protected $guard = [''];
+    protected $guarded = [];
 
     protected $table = 'katalog_makeup';
 
