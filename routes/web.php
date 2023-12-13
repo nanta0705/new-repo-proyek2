@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\DataOwnerController;
 use App\Http\Controllers\Owner\KatalogMakeupController;
+use App\Http\Controllers\Owner\TypeMakeupController;
 use App\Http\Controllers\RegisterController;
 
 /*
@@ -26,12 +27,16 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::resource('/register', RegisterController::class);
 
 Route::group(['middleware' => ['autentikasi']], function () {
+
     Route::get('/admin/dashboard', [AppController::class, 'admin']);
     Route::resource('/admin/data_client', DataClientController::class);
     Route::resource('/admin/data_owner', DataOwnerController::class);
 
     Route::get('/owner/dashboard', [AppController::class, 'owner']);
     Route::resource('/owner/katalog_makeup', KatalogMakeupController::class);
+    Route::resource('/owner/type_makeup', TypeMakeupController::class);
+
+
     Route::get('/client/dashboard', [AppController::class, 'client']);
 
 
