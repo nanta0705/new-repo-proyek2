@@ -14,12 +14,13 @@ class RegisterController extends Controller
     }
     public function store(Request $request)
     {
+        // dd($request->all());
         try {
             User::create([
                 'name' => $request->name,
                 'username' => str::slug($request->name),
                 'email' => $request->email,
-                'password' => bcrypt('password'),
+                'password' => $request->password,
                 'no_tlp' => $request->no_tlp,
                 'alamat' => $request->alamat,
                 'role_id' => '3',

@@ -12,7 +12,7 @@ class TypeMakeupController extends Controller
     public function index()
     {
         $user = Auth::user()->id;
-        $type = TypeMakeup::where('user_id', $user);
+        $type = TypeMakeup::where('user_id', $user)->get();
         return view('owner.type_makeup.index', compact('type'));
     }
 }
