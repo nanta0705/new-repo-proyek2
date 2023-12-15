@@ -21,6 +21,7 @@ class KatalogMakeupController extends Controller
     public function store(Request $request)
     {
         try {
+
             $request->validate([
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);

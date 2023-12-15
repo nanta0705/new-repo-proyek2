@@ -37,7 +37,7 @@
                                 <td>{{$data->name}}</td>
                                 <td class="text-center">
                                     <a class="btn btn-warning" data-bs-target="#modaldemo2{{$data->id}}" data-bs-toggle="modal" href=""><i class="fa fa-edit"></i></a>
-                                    <form method="POST" action="{{url('/owner/katalog_makeup/'.$data->id)}}">
+                                    <form method="POST" action="{{url('/owner/type_makeup/'.$data->id)}}">
                                         @method('delete')
                                         @csrf
                                     <button type="submit" onclick="return confirm('apakah data ingin dihapus')"
@@ -55,5 +55,60 @@
         </div>
     </div>
 </div>
+
+{{-- Start Tambah Modal --}}
+<div class="modal fade" id="modaldemo1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-content-demo">
+            <div class="modal-header">
+                <h6 class="modal-title">Tambah Type Makeup</h6><button aria-label="Close" class="btn-close" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form action="{{url('/owner/type_makeup')}}" method="post">
+                @csrf
+                <div class="modal-body">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label class="form-label">nama type makeup</label>
+                            <input class="form-control  mb-4 is-valid state-valid" placeholder="Masukan Nama" required="" type="text" name="name">
+                        </div>
+                    </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit">Save changes</button> <button class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{-- End Tambah  Modal --}}
+
+
+{{-- Start Edit Modal --}}
+@foreach ($type as $edit)
+<div class="modal fade" id="modaldemo2{{$edit->id}}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-content-demo">
+            <div class="modal-header">
+                <h6 class="modal-title">Edit</h6><button aria-label="Close" class="btn-close" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form action="{{url('/owner/type_makeup/' .$edit->id)}}" method="post">
+                @csrf
+                @method('put')
+                <div class="modal-body">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label class="form-label">nama type makeup</label>
+                            <input value="{{$edit->name}}" class="form-control  mb-4 is-valid state-valid" placeholder="Masukan Nama" required="" type="text" name="name">
+                        </div>
+                    </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit">Save changes</button> <button class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+{{-- End Edit Modal --}}
 
 @endsection

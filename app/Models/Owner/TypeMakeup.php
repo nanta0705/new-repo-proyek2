@@ -9,7 +9,7 @@ class TypeMakeup extends Model
 {
     use HasFactory;
 
-    protected $guarded = [''];
+    protected $guarded = [];
 
     protected $table = 'type_makeup';
 }
