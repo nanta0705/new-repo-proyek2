@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
+use App\Models\Owner\DetailMakeup;
 use App\Models\Owner\KatalogMakeup;
+use App\Models\Owner\TypeMakeup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -13,8 +15,10 @@ class KatalogMakeupController extends Controller
 {
     public function index()
     {
-        $katalog_makeup = KatalogMakeup::all();
-        return view('owner.katalog_makeup.index', compact('katalog_makeup'));
+        $type = TypeMakeup::all();
+        $user = Auth::user()->id;
+        $katalog_makeup = KatalogMakeup::where('user_id', $user)->get();
+        return view('owner.katalog_makeup.index', compact('katalog_makeup', 'type'));
     }
 
 
@@ -29,7 +33,7 @@ class KatalogMakeupController extends Controller
             $ImageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('katalog_makeup_image'), $ImageName);
 
-            KatalogMakeup::create([
+            $makeup = KatalogMakeup::create([
                 'name' => $request->name,
                 'description' => $request->description,
                 'price' => $request->price,
@@ -37,6 +41,19 @@ class KatalogMakeupController extends Controller
                 'user_id' => Auth::user()->id,
 
             ]);
+
+            $makeupId = $makeup->id;
+
+            $selectedTypeMakeup = $request->input('type_makeup');
+
+            foreach ($selectedTypeMakeup as $typeMakeupId) {
+                DetailMakeup::create([
+                    'id_makeup' => $makeupId,
+                    'id_type_makeup' => $typeMakeupId,
+                ]);
+            }
+
+
             Alert::success('Data Makeup Berhasil Ditambahkan');
             return back();
         } catch (\Exception $e) {

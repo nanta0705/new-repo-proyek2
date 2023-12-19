@@ -99,7 +99,21 @@
                             <input class="form-control  mb-4 is-valid state-valid" placeholder="Masukan image"  type="file" name="image">
                         </div>
                     </div>
+
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            @foreach ($type as $data )
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="type_makeup[]"
+                                    value="{{ $data->id }}">
+                                <span class="custom-control-label">{{ $data->name }}</span>
+                            </label>
+                            @endforeach
+                        </div>
+                    </div>
+
                 </div>
+
                 <div class="modal-footer">
                     <button class="btn btn-primary" type="submit">Save changes</button> <button class="btn btn-light" data-bs-dismiss="modal">Close</button>
                 </div>

@@ -72,6 +72,7 @@
                             <input class="form-control  mb-4 is-valid state-valid" placeholder="Masukan Nama" required="" type="text" name="name">
                         </div>
                     </div>
+                </div>
 
                 <div class="modal-footer">
                     <button class="btn btn-primary" type="submit">Save changes</button> <button class="btn btn-light" data-bs-dismiss="modal">Close</button>
@@ -101,6 +102,7 @@
                             <input value="{{$edit->name}}" class="form-control  mb-4 is-valid state-valid" placeholder="Masukan Nama" required="" type="text" name="name">
                         </div>
                     </div>
+                </div>
                 <div class="modal-footer">
                     <button class="btn btn-primary" type="submit">Save changes</button> <button class="btn btn-light" data-bs-dismiss="modal">Close</button>
                 </div>
