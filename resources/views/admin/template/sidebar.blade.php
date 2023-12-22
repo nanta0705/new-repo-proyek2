@@ -25,7 +25,7 @@
 
 
                 <li class="sub-category">
-                    <h3>Akun</h3>
+                    <h3>Auth</h3>
                 </li>
                 <li class="slide">
                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><i class="side-menu__icon fe fe-layers"></i><span class="side-menu__label">Akun</span><i class="angle fa fa-angle-right"></i></a>
@@ -33,8 +33,16 @@
                         <li class="side-menu-label1"><a href="javascript:void(0)">Akun</a></li>
                         <li><a href="{{url('/admin/data_client')}}" class="slide-item"> Akun Client</a></li>
                         <li><a href="{{url('/admin/data_owner')}}" class="slide-item"> Akun Owner</a></li>
-
-
+                    </ul>
+                </li>
+                <li class="sub-category">
+                    <h3>Content</h3>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><i class="side-menu__icon fa fa-file"></i><span class="side-menu__label">Content</span><i class="angle fa fa-angle-right"></i></a>
+                    <ul class="slide-menu">
+                        <li class="side-menu-label1"><a href="javascript:void(0)">Content</a></li>
+                        <li><a href="{{url('/admin/content')}}" class="slide-item">Content Mangament</a></li>
                     </ul>
                 </li>
 

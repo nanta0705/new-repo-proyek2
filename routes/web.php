@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\ContentController;
 use App\Http\Controllers\Admin\DataClientController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingController;
@@ -31,6 +32,9 @@ Route::group(['middleware' => ['autentikasi']], function () {
     Route::get('/admin/dashboard', [AppController::class, 'admin']);
     Route::resource('/admin/data_client', DataClientController::class);
     Route::resource('/admin/data_owner', DataOwnerController::class);
+    Route::get('/admin/content', [ContentController::class, 'index']);
+    Route::get('/admin/content/view/{id}', [ContentController::class, 'show']);
+    Route::post('/admin/content/view/changeStatus', [ContentController::class, 'ChangeStatus']);
 
     Route::get('/owner/dashboard', [AppController::class, 'owner']);
     Route::resource('/owner/katalog_makeup', KatalogMakeupController::class);

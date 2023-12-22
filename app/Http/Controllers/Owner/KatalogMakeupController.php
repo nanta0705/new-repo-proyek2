@@ -15,10 +15,16 @@ class KatalogMakeupController extends Controller
 {
     public function index()
     {
-        $type = TypeMakeup::all();
-        $user = Auth::user()->id;
-        $katalog_makeup = KatalogMakeup::where('user_id', $user)->get();
-        return view('owner.katalog_makeup.index', compact('katalog_makeup', 'type'));
+        $user = auth()->user();
+        if ($user) {
+            $user_id = $user->id;
+            $katalog_makeup = KatalogMakeup::with('detailMakeup')->where('user_id', $user_id)->get();
+        } else {
+            $katalog_makeup = [];
+        }
+        $tipe = TypeMakeup::all();
+
+        return view('owner.katalog_makeup.index', compact('katalog_makeup', 'tipe'));
     }
 
 

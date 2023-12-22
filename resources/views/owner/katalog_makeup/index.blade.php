@@ -28,6 +28,7 @@
                                 <th class="wd-15p border-bottom-0">No</th>
                                 <th class="wd-15p border-bottom-0">name</th>
                                 <th class="wd-20p border-bottom-0">description</th>
+                                <th class="wd-20p border-bottom-0">Tipe Makeup</th>
                                 <th class="wd-15p border-bottom-0">price</th>
                                 <th class="wd-15p border-bottom-0">image</th>
                                 <th class="wd-15p border-bottom-0">action</th>
@@ -39,6 +40,13 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$data->name}}</td>
                                 <td>{{$data->description}}</td>
+                                <td>
+                                    <ul>
+                                        @foreach ($data->detailMakeup as $type)
+                                            <li>-- {{ $type->getType->name }}</li>
+                                        @endforeach
+                                    </ul>
+                                </td>
                                 <td>{{'Rp'.  number_format($data->price, 0,',', '.')}}</td>
                                 <td><img src="{{asset(''). $data->image}}" style="width:60px;height:60"></td>
                                 <td class="text-center">
@@ -102,11 +110,11 @@
 
                     <div class="col-lg-12">
                         <div class="form-group">
-                            @foreach ($type as $data )
+                            @foreach ($tipe as $item )
                             <label class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" name="type_makeup[]"
-                                    value="{{ $data->id }}">
-                                <span class="custom-control-label">{{ $data->name }}</span>
+                                    value="{{ $item->id }}">
+                                <span class="custom-control-label">{{ $item->name }}</span>
                             </label>
                             @endforeach
                         </div>
