@@ -33,6 +33,7 @@
                                 <th class="wd-15p border-bottom-0">Username</th>
                                 <th class="wd-20p border-bottom-0">Alamat</th>
                                 <th class="wd-15p border-bottom-0">No Telepon</th>
+                                <th class="wd-15p border-bottom-0">action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,7 +43,6 @@
                                 <td>{{$data->name}}</td>
                                 <td>{{$data->alamat}}</td>
                                 <td>{{$data->no_tlp}}</td>
-                                <td>{{$data->username}}</td>
                                 <td class="text-center">
                                     <a class="btn btn-primary" href="{{url('/admin/content/view/'.$data->id)}}"><i class="fa fa-eye"></i></a>
                                 </td>

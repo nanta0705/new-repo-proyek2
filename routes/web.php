@@ -34,7 +34,7 @@ Route::group(['middleware' => ['autentikasi']], function () {
     Route::resource('/admin/data_owner', DataOwnerController::class);
     Route::get('/admin/content', [ContentController::class, 'index']);
     Route::get('/admin/content/view/{id}', [ContentController::class, 'show']);
-    Route::post('/admin/content/view/changeStatus', [ContentController::class, 'ChangeStatus']);
+    Route::post('/admin/content/changestatus', [ContentController::class, 'changeStatus']);
 
     Route::get('/owner/dashboard', [AppController::class, 'owner']);
     Route::resource('/owner/katalog_makeup', KatalogMakeupController::class);

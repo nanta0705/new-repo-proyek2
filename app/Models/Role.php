@@ -14,6 +14,4 @@ class Role extends Model
     protected $guarded = [''];
 
     public $timestamp = false;
-    
-    
 }

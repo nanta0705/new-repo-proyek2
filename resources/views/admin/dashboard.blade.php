@@ -92,8 +92,11 @@
         <!-- FOOTER END -->
     </div>
 
+
     <!-- BACK-TO-TOP -->
     <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+    @yield('js')
 
     <!-- JQUERY JS -->
     <script src="{{url('/assets')}}/js/jquery.min.js"></script>

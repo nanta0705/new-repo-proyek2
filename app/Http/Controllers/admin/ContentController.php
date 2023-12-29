@@ -27,17 +27,14 @@ class ContentController extends Controller
 
     public function changeStatus(Request $request)
     {
-        $request->validate([
-            'switch' => 'required',
-        ]);
+        $isChecked = $request->input('isChecked');
+        $productId = $request->input('productId');
 
-        $statusValue = $request->input('switch') == 'on' ? 1 : 0;
-
-        Content::updateOrCreate(
-            ['id_makeup' => $request->input('content_id')],
-            ['status' => $statusValue]
-        );
-
-        return redirect()->back()->with('status', 'Status updated successfully');
+        $produk = Content::find($productId);
+        if ($produk) {
+            $produk->active = $isChecked ? 1 : 0;
+            $produk->save();
+        }
+        return response()->json(['status' => 'success']);
     }
 }

@@ -8,17 +8,13 @@
             <li class="breadcrumb-item active" aria-current="page">Katalog Makeup</li>
         </ol>
     </div>
-    <div class="ms-auto pageheader-btn">
-        <a class="btn btn-primary" data-bs-target="#modaldemo1" data-bs-toggle="modal" href=""><i
-            class="fa fa-plus"></i>Tambah Data</a>
-    </div>
 </div>
 <!-- PAGE-HEADER END -->
 <div class="row row-sm">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Makeup Table</h3>
+                <h3 class="card-title">{{$name}}</h3>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -50,14 +46,15 @@
                                 <td>{{'Rp'.  number_format($data->price, 0,',', '.')}}</td>
                                 <td><img src="{{asset(''). $data->image}}" style="width:60px;height:60"></td>
                                 <td class="text-center">
-                                    <form action="/admin/content/view/changeStatus" method="POST">
+                                    <form action="/admin/content/changestatus" method="POST">
                                         @csrf
-                                        <input type="hidden" name="content_id" > <!-- Adjust this based on your actual data -->
                                         <label class="custom-switch">
-                                            <input type="checkbox" name="switch" class="custom-switch-input">
+                                            <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input"
+                                                data-product-id="{{ $data->id }}" {{ $data->managementContent->active == 1 ? 'checked' : '' }}>
                                             <span class="custom-switch-indicator"></span>
                                         </label>
                                     </form>
+
                                 <td>
                             </tr>
                             @endforeach
@@ -68,4 +65,33 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $('body').on('change', '.custom-switch-input', function() {
+            let productId = $(this).data('product-id');
+            let isChecked = $(this).prop('checked') ? 1 : 0;
+
+            $.ajax({
+                method: 'POST',
+                url: '/admin/content/changestatus',
+                data: {
+                    productId: productId,
+                    isChecked: isChecked,
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(xhr) {
+                    console.error(xhr);
+                }
+            });
+        });
+</script>
+
+
 @endsection
