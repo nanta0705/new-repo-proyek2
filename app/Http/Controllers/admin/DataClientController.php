@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -12,14 +13,17 @@ class DataClientController extends Controller
 {
     public function index()
     {
-        $user = User::where('role_id', 3)->get();
+        $user = Customer::join('users', 'customer.user_id', '=', 'users.id')
+            ->where('users.role_id', 3)
+            ->select('customer.*')
+            ->get();
         return view('admin.akun_client.index', compact('user'));
     }
 
     public function store(Request $request)
     {
         try {
-            User::create([
+            $user = User::create([
                 'name' => $request->nama,
                 'username' => str::slug($request->nama),
                 'email' => $request->email,
@@ -27,11 +31,18 @@ class DataClientController extends Controller
                 'no_tlp' => $request->no_telepon,
                 'alamat' => $request->alamat,
                 'role_id' => '3',
-
             ]);
+
+            Customer::create([
+                "id_customer" => "CUST-" . date("YmdHis"),
+                'user_id' => $user->id,
+                'pekerjaan' => $request->pekerjaan,
+            ]);
+            Alert::success('yeay data berhasil');
             return back()->with('success');
         } catch (\Exception $e) {
-            return back()->with('error' . $e->getMessage());
+            Alert::error('gagal update' . $e->getMessage());
+            return back()->with('error');
         }
     }
 

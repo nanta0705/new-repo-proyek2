@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DataOwnerController;
 use App\Http\Controllers\Owner\KatalogMakeupController;
 use App\Http\Controllers\Owner\TypeMakeupController;
@@ -35,6 +36,8 @@ Route::group(['middleware' => ['autentikasi']], function () {
     Route::get('/admin/content', [ContentController::class, 'index']);
     Route::get('/admin/content/view/{id}', [ContentController::class, 'show']);
     Route::post('/admin/content/changestatus', [ContentController::class, 'changeStatus']);
+
+    Route::resource('/booking', BookingController::class);
 
     Route::get('/owner/dashboard', [AppController::class, 'owner']);
     Route::resource('/owner/katalog_makeup', KatalogMakeupController::class);

@@ -1,45 +1,43 @@
-<section class="hero-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="hero-text" style="color :black">
-                    <h1>Gawe Ayu</h1>
-                    <p>Berikut situs pemesanan jasa makeup artist terbaik termasuk rekomendasi makeup terbaik
-                        temukan style makeupmu.</p>
-                    <a href="#" class="primary-btn">Discover Now</a>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
-                <div class="booking-form">
-                    <h3>Booking Your Makeup</h3>
-                    <form action="#">
-                        <div class="check-date">
-                            <label for="date-in">Tanggal Pesan</label>
-                            <input type="text" class="date-input" id="date-in">
-                            <i class="icon_calendar"></i>
-                        </div>
+<div class="owl-carousel owl-hero">
 
-                        <div class="select-option">
-                            <label for="guest">Guests:</label>
-                            <select id="guest">
-                                <option value="">1</option>
-                            </select>
-                        </div>
-                        <div class="select-option">
-                            <label for="room">Jenis Makeup</label>
-                            <select id="room">
-                                <option value="">Graduation Makeup</option>
-                            </select>
-                        </div>
-                        <button type="submit">Check Availability</button>
-                    </form>
-                </div>
+    <div class="untree_co--site-hero overlay" style="background-image: url('{{url('/layout_landing')}}/images/hero/makeup1.jpg')">
+        {{-- public\layout_landing\images\hero\makeup1.jpg --}}
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-8">
+            <div class="site-hero-contents text-center" data-aos="fade-up">
+              <h1 class="hero-heading">LuxuryHotel by Untree.co</h1>
+              <div class="sub-text">
+                <p>Another free awesome templates for Hotels and any kind of website by <a href="https://untree.co/" target="_blank" class="text-white font-weight-bold">Untree.co</a>. See our <a href="https://untree.co/license/" class="text-white font-weight-bold">license page</a> for more usage details</p>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    <div class="hero-slider owl-carousel">
-        <div class="hs-item set-bg" data-setbg="{{ url('/landing')}}/img/hero/hero-1.jpg"></div>
-        <div class="hs-item set-bg" data-setbg="{{ url('/landing')}}/img/hero/hero-2.jpg"></div>
-        <div class="hs-item set-bg" data-setbg="{{ url('/landing')}}/img/hero/hero-3.jpg"></div>
+
+    <div class="untree_co--site-hero overlay"  style="background-image: url('{{url('/layout_landing')}}/images/hero/makeup2.jpg')">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-7">
+            <div class="site-hero-contents text-center" data-aos="fade-up">
+              <h1 class="hero-heading">Enjoy Your Stay</h1>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
+
+    <div class="untree_co--site-hero overlay" style="background-image: url('{{url('/layout_landing')}}/images/room_1_a.jpg')">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-10">
+            <div class="site-hero-contents text-center" data-aos="fade-up">
+              <h1 class="hero-heading">Away from the Hustle and Bustle of City Life</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

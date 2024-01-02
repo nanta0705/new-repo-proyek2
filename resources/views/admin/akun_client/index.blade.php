@@ -9,12 +9,7 @@
         </ol>
     </div>
     <div class="ms-auto pageheader-btn">
-        <a class="btn btn-primary" data-bs-target="#modaldemo1" data-bs-toggle="modal" href="">View Live Demo</a>
-        <a href="javascript:void(0);" class="btn btn-success btn-icon text-white">
-            <span>
-                <i class="fe fe-log-in"></i>
-            </span> Export
-        </a>
+        <a class="btn btn-primary " data-bs-target="#modaldemo1" data-bs-toggle="modal" href="">Tambah Data Client</a>
     </div>
 </div>
 <!-- PAGE-HEADER END -->
@@ -30,19 +25,23 @@
                         <thead>
                             <tr>
                                 <th class="wd-15p border-bottom-0">No</th>
-                                <th class="wd-15p border-bottom-0">Username</th>
+                                <th class="wd-15p border-bottom-0">id customer</th>
+                                <th class="wd-15p border-bottom-0">nama</th>
                                 <th class="wd-20p border-bottom-0">Alamat</th>
                                 <th class="wd-15p border-bottom-0">No Telepon</th>
+                                <th class="wd-15p border-bottom-0">Username</th>
+                                <th class="wd-15p border-bottom-0">action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($user as $data)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$data->name}}</td>
-                                <td>{{$data->alamat}}</td>
-                                <td>{{$data->no_tlp}}</td>
-                                <td>{{$data->username}}</td>
+                                <td>{{$data->id_customer}}</td>
+                                <td>{{$data->getCustomer->name}}</td>
+                                <td>{{$data->getCustomer->alamat}}</td>
+                                <td>{{$data->getCustomer->no_tlp}}</td>
+                                <td>{{$data->getCustomer->username}}</td>
                                 <td class="text-center">
                                     <a class="btn btn-warning" data-bs-target="#modaldemo2{{$data->id}}" data-bs-toggle="modal" href=""><i class="fa fa-edit"></i></a>
                                     <form method="POST" action="{{url('/admin/data_client/'.$data->id)}}">
@@ -91,7 +90,12 @@
                             <label class="form-label">no telepon</label>
                             <input class="form-control  mb-4 is-valid state-valid" placeholder="Masukan no telepon" required="" type="number" name="no_telepon">
                         </div>
-
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label class="form-label">Pekerjaan</label>
+                            <input class="form-control  mb-4 is-valid state-valid" placeholder="Masukan no telepon" required="" type="text" name="pekerjaan">
+                        </div>
                     </div>
                     <div class="col-lg-12">
                         <div class="form-group">
@@ -111,8 +115,6 @@
 
 {{-- Start Edit Modal --}}
 @foreach ($user as $edit)
-
-
 <div class="modal fade" id="modaldemo2{{$edit->id}}">
     <div class="modal-dialog" role="document">
         <div class="modal-content modal-content-demo">
