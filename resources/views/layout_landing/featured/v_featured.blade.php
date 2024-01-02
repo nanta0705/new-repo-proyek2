@@ -17,7 +17,11 @@
             <h3>{{$item->getMakeup->name}}</h3>
             <p>{{$item->getMakeup->description}}</p>
             <h5>Rp.{{ number_format($item->getMakeup->price, 0, ',', '.') }}</h5>
-            <p><p><a href="#" data-toggle="modal" data-target="#exampleModal{{$item->getMakeup->id}}" class="readmore reverse">Book Now!</a></p></p>
+            @if (Auth::check() && Auth::user()->role_id == 3)
+                        <p><a href="#" data-toggle="modal" data-target="#exampleModal{{$item->getMakeup->id}}" class="readmore reverse">Book Now!</a></p>
+                    @else
+                        <p><a href="{{ route('login') }}" class="readmore reverse">Login to Book</a></p>
+                    @endif
           </div>
         </div>
         @endforeach

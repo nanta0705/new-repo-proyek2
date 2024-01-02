@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterController extends Controller
 {
@@ -16,7 +18,7 @@ class RegisterController extends Controller
     {
         // dd($request->all());
         try {
-            User::create([
+            $user = User::create([
                 'name' => $request->name,
                 'username' => str::slug($request->name),
                 'email' => $request->email,
@@ -24,11 +26,17 @@ class RegisterController extends Controller
                 'no_tlp' => $request->no_tlp,
                 'alamat' => $request->alamat,
                 'role_id' => '3',
-
             ]);
-            return redirect('/login')->with('success');
+            Customer::create([
+                "id_customer" => "CUST-" . date("YmdHis"),
+                'user_id' => $user->id,
+                'pekerjaan' => $request->pekerjaan,
+            ]);
+            Alert::success('Register Berhasil, Silahkan Login');
+            return redirect('/login');
         } catch (\Exception $e) {
-            return back()->with('error' . $e->getMessage());
+            Alert::error('gagal update' . $e->getMessage());
+            return back();
         }
     }
 }

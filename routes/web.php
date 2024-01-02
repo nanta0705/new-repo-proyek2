@@ -7,6 +7,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\client\ClientBookingController;
 use App\Http\Controllers\DataOwnerController;
 use App\Http\Controllers\Owner\KatalogMakeupController;
 use App\Http\Controllers\Owner\TypeMakeupController;
@@ -45,6 +46,7 @@ Route::group(['middleware' => ['autentikasi']], function () {
 
 
     Route::get('/client/dashboard', [AppController::class, 'client']);
+    Route::resource('/client/booking', ClientBookingController::class);
 
 
 

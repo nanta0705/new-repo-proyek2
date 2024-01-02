@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -33,7 +34,7 @@ class UserSeeder extends Seeder
             'role_id' => '2',
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => 'client',
             'username' => 'client',
             'email' => 'sclient@gmail.com',
@@ -41,6 +42,12 @@ class UserSeeder extends Seeder
             'alamat' => 'indramayu',
             'password' => bcrypt('password'),
             'role_id' => '3',
+        ]);
+
+        Customer::create([
+            "id_customer" => "CUST-" . date("YmdHis"),
+            'user_id' => $user->id,
+            'pekerjaan' => 'mahasiswa'
         ]);
     }
 }

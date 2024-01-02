@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V1</title>
+	<title>Register</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -28,7 +28,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="images/img-01.png" alt="IMG">page
+					<img src="{{url('/autentikasi')}}/images/img-01.png" alt="IMG">Register page
 				</div>
 
 				<form action="{{url('/register')}}" method="POST" class="login100-form validate-form">
@@ -42,15 +42,15 @@
 						<input class="input100" type="text" name="name" placeholder="masukan nama">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
+							<i class="fa fa-users" aria-hidden="true"></i>
 						</span>
 					</div>
 
                     <div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="username" placeholder="masukan username">
+						<input class="input100" type="text" name="name" placeholder="masukan username">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
+							<i class="fa fa-user" aria-hidden="true"></i>
 						</span>
 					</div>
 
@@ -74,7 +74,15 @@
 						<input class="input100" type="text" name="no_tlp" placeholder="masukan no_tlp">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
+							<i class="fa fa-phone" aria-hidden="true"></i>
+						</span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" name="pekerjaan" placeholder="masukan pekerjaan">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-tasks" aria-hidden="true"></i>
 						</span>
 					</div>
 
@@ -82,23 +90,14 @@
 						<input class="input100" type="text" name="alamat" placeholder="masukan alamat">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
+							<i class="fa fa-address-card" aria-hidden="true"></i>
 						</span>
 					</div>
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							login
+							Register
 						</button>
-					</div>
-
-					<div class="text-center p-t-12">
-						<span class="txt1">
-							Forgot
-						</span>
-						<a class="txt2" href="#">
-							Username / Password?
-						</a>
 					</div>
 
 					<div class="text-center p-t-136">
@@ -127,6 +126,8 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="{{url('/autentikasi')}}/js/main.js"></script>
+    @include('sweetalert::alert')
+
 
 </body>
 </html>

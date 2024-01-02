@@ -40,9 +40,13 @@
       <div class="icons-wrap text-md-right">
 
         <ul class="icons-top d-none d-lg-block">
-          <li class="mr-4">
-            <a href="{{url('/login')}}"><span class="fa fa-sign-in"></span></a>
-          </li>
+            <li class="mr-4">
+                @auth
+                    <a href="{{url('/client/dashboard')}}">Dashboard</a>
+                @else
+                    <a href="{{url('/login')}}"><span class="fa fa-sign-in"></span></a>
+                @endauth
+            </li>
           {{-- <li>
             <a href="#"><span class="icon-facebook"></span></a>
           </li>
