@@ -33,7 +33,7 @@ class LoginController extends Controller
             } else if ($user->role_id == '2') {
                 return redirect("/owner/dashboard")->withsuccess('selamat anda berhasil login, selmat datang' . Auth::user()->name);
             } else if ($user->role_id == '3') {
-                return redirect("/client/dashboard")->withsuccess('selamat anda berhasil login, selamat datang' . Auth::user()->name);
+                return redirect("/")->withsuccess('selamat anda berhasil login, selamat datang' . Auth::user()->name);
             }
         } else {
             return back()->withError('error');

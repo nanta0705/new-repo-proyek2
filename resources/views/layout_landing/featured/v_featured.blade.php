@@ -3,7 +3,7 @@
       <div class="container pt-0 pb-5">
       <div class="row justify-content-center text-center">
         <div class="col-lg-6 section-heading" data-aos="fade-up">
-          <h3 class="text-center">Bookg Your Makeup NOW!!</h3>
+          <h3 class="text-center">Pesan Sekarang juga!</h3>
         </div>
       </div>
     </div>
@@ -19,9 +19,13 @@
             <h5>Rp.{{ number_format($item->getMakeup->price, 0, ',', '.') }}</h5>
             @if (Auth::check() && Auth::user()->role_id == 3)
                         <p><a href="#" data-toggle="modal" data-target="#exampleModal{{$item->getMakeup->id}}" class="readmore reverse">Book Now!</a></p>
+            @else
+                    @if(Auth::check())
+                        <p>Anda Bukan User!/Client!</p>
                     @else
-                        <p><a href="{{ route('login') }}" class="readmore reverse">Login to Book</a></p>
+                        <p><a href="{{ route('login') }}" class="readmore reverse">Login To Booking</a></p>
                     @endif
+            @endif
           </div>
         </div>
         @endforeach

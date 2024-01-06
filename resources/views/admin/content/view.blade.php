@@ -22,20 +22,20 @@
                         <thead>
                             <tr>
                                 <th class="wd-15p border-bottom-0">No</th>
-                                <th class="wd-15p border-bottom-0">name</th>
-                                <th class="wd-20p border-bottom-0">description</th>
-                                <th class="wd-20p border-bottom-0">Tipe Makeup</th>
-                                <th class="wd-15p border-bottom-0">price</th>
-                                <th class="wd-15p border-bottom-0">image</th>
-                                <th class="wd-15p border-bottom-0">action</th>
+                                <th class="wd-15p border-bottom-0">Name</th>
+                                <th class="wd-20p border-bottom-0">Description</th>
+                                <th class="wd-20p border-bottom-0">Type Makeup</th>
+                                <th class="wd-15p border-bottom-0">Price</th>
+                                <th class="wd-15p border-bottom-0">Image</th>
+                                <th class="wd-15p border-bottom-0">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($makeup as $data)
                             <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{$data->name}}</td>
-                                <td>{{$data->description}}</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $data->name }}</td>
+                                <td>{{ $data->description }}</td>
                                 <td>
                                     <ul>
                                         @foreach ($data->detailMakeup as $type)
@@ -43,8 +43,8 @@
                                         @endforeach
                                     </ul>
                                 </td>
-                                <td>{{'Rp'.  number_format($data->price, 0,',', '.')}}</td>
-                                <td><img src="{{asset(''). $data->image}}" style="width:60px;height:60"></td>
+                                <td>{{ 'Rp'. number_format($data->price, 0, ',', '.') }}</td>
+                                <td><img src="{{ asset('') . $data->image }}" style="width: 60px; height: 60;"></td>
                                 <td class="text-center">
                                     <form action="/admin/content/changestatus" method="POST">
                                         @csrf
@@ -54,8 +54,7 @@
                                             <span class="custom-switch-indicator"></span>
                                         </label>
                                     </form>
-
-                                <td>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -68,8 +67,6 @@
 @endsection
 
 @section('js')
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
 <script>
     $('body').on('change', '.custom-switch-input', function() {
             let productId = $(this).data('product-id');

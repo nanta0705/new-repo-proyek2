@@ -1,104 +1,133 @@
+<!doctype html>
+<html lang="en" dir="ltr">
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
-	<title>Login</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="{{url('/autentikasi')}}/images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{url('/autentikasi')}}/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{url('/autentikasi')}}/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{url('/autentikasi')}}/vendor/animate/animate.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{url('/autentikasi')}}/vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{url('/autentikasi')}}/vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{url('/autentikasi')}}/css/util.css">
-	<link rel="stylesheet" type="text/css" href="{{url('/autentikasi')}}/css/main.css">
-<!--===============================================================================================-->
+
+    <!-- META DATA -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Zanex – Bootstrap  Admin & Dashboard Template">
+    <meta name="author" content="Spruko Technologies Private Limited">
+    <meta name="keywords"
+        content="admin, dashboard, dashboard ui, admin dashboard template, admin panel dashboard, admin panel html, admin panel html template, admin panel template, admin ui templates, administrative templates, best admin dashboard, best admin templates, bootstrap 4 admin template, bootstrap admin dashboard, bootstrap admin panel, html css admin templates, html5 admin template, premium bootstrap templates, responsive admin template, template admin bootstrap 4, themeforest html">
+
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url('/assets') }}/images/brand/favicon.ico" />
+
+    <!-- TITLE -->
+    <title>Zanex – Bootstrap Admin & Dashboard Template</title>
+
+    <!-- BOOTSTRAP CSS -->
+    <link id="style" href="{{ url('/assets') }}/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- STYLE CSS -->
+    <link href="{{ url('/assets') }}/css/style.css" rel="stylesheet" />
+    <link href="{{ url('/assets') }}/css/plugins.css" rel="stylesheet" />
+
+    <!--- FONT-ICONS CSS -->
+    <link href="{{ url('/assets') }}/css/icons.css" rel="stylesheet" />
+
 </head>
-<body>
 
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src="{{ url('/autentikasi') }}/images/img-01.png" alt="IMG">
-				</div>
+<body class="login-img">
 
-				<form action="{{route('login')}}" method="POST" class="login100-form validate-form">
-					<!-- fungsi bagian pengamanan -->
-                    @csrf
-					<span class="login100-form-title">
-						Member Login
-					</span>
+    <!-- BACKGROUND-IMAGE -->
+    <div>
 
-					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="username" placeholder="username">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-user" aria-hidden="true"></i>
-						</span>
-					</div>
+        <!-- GLOABAL LOADER -->
+        <div id="global-loader">
+            <img src="{{ url('/assets') }}/images/loader.svg" class="loader-img" alt="Loader">
+        </div>
+        <!-- /GLOABAL LOADER -->
 
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
+        <!-- PAGE -->
+        <div class="page login-page">
+            <div>
+                <!-- CONTAINER OPEN -->
+                <div class="col col-login mx-auto mt-7">
+                    <div class="text-center">
+                        <img src="{{ url('/assets') }}/images/brand/logo.png" class="header-brand-img" alt="">
+                    </div>
+                </div>
+                <div class="container-login100">
+                    <div class="wrap-login100 p-0">
+                        <div class="card-body">
+                            <form action="{{ route('login') }}" method="POST" class="login100-form validate-form">
+                                @csrf
+                                <span class="login100-form-title">
+                                    Login
+                                </span>
+                                <div class="wrap-input100 validate-input"
+                                    data-bs-validate = "Valid email is required: ex@abc.xyz">
+                                    <input class="input100" type="text" name="username" placeholder="Username">
+                                    <span class="focus-input100"></span>
+                                    <span class="symbol-input100">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div class="wrap-input100 validate-input" data-bs-validate = "Password is required">
+                                    <input class="input100" type="password" name="password" placeholder="Password">
+                                    <span class="focus-input100"></span>
+                                    <span class="symbol-input100">
+                                        <i class="zmdi zmdi-lock" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div class="text-end pt-1">
+                                    <p class="mb-0"><a href="forgot-password.html" class="text-primary ms-1">Forgot
+                                            Password?</a></p>
+                                </div>
+                                <div class="container-login100-form-btn">
+                                    <button type="submit" class="login100-form-btn btn-primary">
+                                        Login
+                                    </button>
+                                </div>
+                                <div class="text-center pt-3">
+                                    <p class="text-dark mb-0">Belum Punya Akun?<a href="{{ url('/register') }}"
+                                            class="text-primary ms-1">Buat Akun</a></p>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer">
+                        </div>
+                    </div>
+                </div>
+                <!-- CONTAINER CLOSED -->
+            </div>
+        </div>
+        <!-- End PAGE -->
 
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
-						</button>
-					</div>
+    </div>
+    <!-- BACKGROUND-IMAGE CLOSED -->
 
-					<div class="text-center p-t-12">
-						<span class="txt1">
-							Forgot
-						</span>
-						<a class="txt2" href="#">
-							Username / Password?
-						</a>
-					</div>
+    <!-- JQUERY JS -->
+    <script src="{{ url('/assets') }}/js/jquery.min.js"></script>
 
-					<div class="text-center p-t-136">
-						<a class="txt2" href="{{url('/register')}}">
-							Create your Account
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+    <!-- BOOTSTRAP JS -->
+    <script src="{{ url('/assets') }}/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="{{ url('/assets') }}/plugins/bootstrap/js/bootstrap.min.js"></script>
 
+    <!-- SPARKLINE JS -->
+    <script src="{{ url('/assets') }}/js/jquery.sparkline.min.js"></script>
 
+    <!-- CHART-CIRCLE JS -->
+    <script src="{{ url('/assets') }}/js/circle-progress.min.js"></script>
 
+    <!-- Perfect SCROLLBAR JS-->
+    <script src="{{ url('/assets') }}/plugins/p-scroll/perfect-scrollbar.js"></script>
 
-<!--===============================================================================================-->
-	<script src="{{url('/autentikasi')}}/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="{{url('/autentikasi')}}/vendor/bootstrap/js/popper.js"></script>
-	<script src="{{url('/autentikasi')}}/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="{{url('/autentikasi')}}/vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="{{url('/autentikasi')}}/vendor/tilt/tilt.jquery.min.js"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="{{url('/autentikasi')}}/js/main.js"></script>
+    <!-- INPUT MASK JS -->
+    <script src="{{ url('/assets') }}/plugins/input-mask/jquery.mask.min.js"></script>
+
+    <!-- Color Theme js -->
+    <script src="{{ url('/assets') }}/js/themeColors.js"></script>
+
+    <!-- swither styles js -->
+    <script src="{{ url('/assets') }}/js/swither-styles.js"></script>
+
+    <!-- CUSTOM JS -->
+    <script src="{{ url('/assets') }}/js/custom.js"></script>
 
 </body>
+
 </html>

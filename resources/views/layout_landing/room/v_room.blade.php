@@ -3,7 +3,7 @@
     <div class="container pt-0 pb-5">
       <div class="row justify-content-center text-center">
         <div class="col-lg-6 section-heading" data-aos="fade-up">
-          <h3 class="text-center">Featured Rooms</h3>
+          <h3 class="text-center">Gawe Ayu Makeup</h3>
         </div>
       </div>
     </div>
@@ -15,20 +15,20 @@
           <div class="image-stack">
             <div class="image-stack-item image-stack-item-top" data-jarallax-element="-50">
               <div class="overlay"></div>
-              <img src="{{url('/layout_landing')}}/images/room_1_a.jpg" alt="Image" class="img-fluid pic1">
+              <img src="{{url('/layout_landing')}}/images/hero/makeup1.jpg" alt="Image" class="img-fluid pic1">
             </div>
             <div class="image-stack-item image-stack-item-bottom">
               <div class="overlay"></div>
-              <img src="{{url('/layout_landing')}}/images/room_1_b.jpg" alt="Image" class="img-fluid pic2">
+              <img src="{{url('/layout_landing')}}/images/hero/makeup2.jpg" alt="Image" class="img-fluid pic2">
             </div>
           </div>
         </div> <!-- .suite -->
 
         <div class="suite-contents" data-jarallax-element="50">
-          <h2 class="suite-title">King Bedroom</h2>
+          <h2 class="suite-title">Makeup Artist Profesional</h2>
           <div class="suite-excerpt">
-            <p>A hotel is an establishment that provides paid lodging on a short-term basis. Facilities provided may range from a modest-quality mattress in a small room to large suites with bigger.</p>
-            <p><a href="#" class="readmore">Room Details</a></p>
+            <p>Kami menyediakan jasa makeup artist dengan pemesanan lebih mudah . Merupakan website boking makeup nomor 1 di Indramayu.</p>
+            <p><a href="#" class="readmore">Makeup & Style Details</a></p>
           </div>
         </div>
       </div>

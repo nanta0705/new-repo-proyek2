@@ -96,7 +96,6 @@
     <!-- BACK-TO-TOP -->
     <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
 
-    @yield('js')
 
     <!-- JQUERY JS -->
     <script src="{{url('/assets')}}/js/jquery.min.js"></script>
@@ -168,6 +167,8 @@
     <script src="{{ url('/assets') }}/js/table-data.js"></script>
 
     @include('sweetalert::alert')
+    @yield('js')
+
 
 
 </body>
