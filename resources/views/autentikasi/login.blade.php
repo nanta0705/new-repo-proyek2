@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Zanex – Bootstrap  Admin & Dashboard Template">
+    <meta name="description" content="Gawe Ayu – Bootstrap  Admin & Dashboard Template">
     <meta name="author" content="Spruko Technologies Private Limited">
     <meta name="keywords"
         content="admin, dashboard, dashboard ui, admin dashboard template, admin panel dashboard, admin panel html, admin panel html template, admin panel template, admin ui templates, administrative templates, best admin dashboard, best admin templates, bootstrap 4 admin template, bootstrap admin dashboard, bootstrap admin panel, html css admin templates, html5 admin template, premium bootstrap templates, responsive admin template, template admin bootstrap 4, themeforest html">
@@ -16,7 +16,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ url('/assets') }}/images/brand/favicon.ico" />
 
     <!-- TITLE -->
-    <title>Zanex – Bootstrap Admin & Dashboard Template</title>
+    <title>Sibatik – Bootstrap Admin & Dashboard </title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ url('/assets') }}/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -47,7 +47,7 @@
                 <!-- CONTAINER OPEN -->
                 <div class="col col-login mx-auto mt-7">
                     <div class="text-center">
-                        <img src="{{ url('/assets') }}/images/brand/logo.png" class="header-brand-img" alt="">
+                        <img src="{{ url('/assets') }}/images/polindra.png" class="header-brand-img" alt="">
                     </div>
                 </div>
                 <div class="container-login100">

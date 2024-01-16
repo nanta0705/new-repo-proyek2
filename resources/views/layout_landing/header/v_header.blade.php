@@ -1,12 +1,12 @@
 <nav class="untree_co--site-nav js-sticky-nav">
     <div class="container d-flex align-items-center">
         <div class="logo-wrap">
-            <a href="index.html" class="untree_co--site-logo">Gawe Ayu Makeup</a>
+            <a href="index.html" class="untree_co--site-logo">SIBATIK</a>
         </div>
         <div class="site-nav-ul-wrap text-center d-none d-lg-block">
             <ul class="site-nav-ul js-clone-nav">
                 <li class="active"><a href="index.html">Home</a></li>
-                <li class="has-children">
+                {{-- <li class="has-children">
                     <a href="rooms.html">Rooms</a>
                     <ul class="dropdown">
                         <li class="has-children">
@@ -30,7 +30,7 @@
                             <a href="#">Le Voila Suite</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
