@@ -38,6 +38,7 @@ Route::group(['middleware' => ['autentikasi']], function () {
     Route::get('/admin/content/view/{id}', [ContentController::class, 'show']);
     Route::post('/admin/content/changestatus', [ContentController::class, 'changeStatus']);
 
+
     Route::resource('/booking', BookingController::class);
 
     Route::get('/owner/dashboard', [AppController::class, 'owner']);
