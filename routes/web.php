@@ -44,6 +44,8 @@ Route::group(['middleware' => ['autentikasi']], function () {
     Route::get('/owner/dashboard', [AppController::class, 'owner']);
     Route::resource('/owner/katalog_makeup', KatalogMakeupController::class);
     Route::resource('/owner/type_makeup', TypeMakeupController::class);
+    Route::post('/owner/changeStatus', [BookingController::class, 'changeStatus'])->name('changeStatus');
+
 
 
     Route::get('/client/dashboard', [AppController::class, 'client']);

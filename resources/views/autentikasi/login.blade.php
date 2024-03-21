@@ -16,11 +16,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ url('/assets') }}/images/brand/favicon.ico" />
 
     <!-- TITLE -->
-<<<<<<< HEAD
-    <title>Gawe Ayu – Bootstrap Admin & Dashboard </title>
-=======
-    <title>Sibatik – Bootstrap Admin & Dashboard </title>
->>>>>>> 32bbcf44afed5acdb57e2203467748aad76fa436
+
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ url('/assets') }}/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -51,11 +47,11 @@
                 <!-- CONTAINER OPEN -->
                 <div class="col col-login mx-auto mt-7">
                     <div class="text-center">
-<<<<<<< HEAD
+
                         <img src="{{ url('/assets') }}/images/gaweayu1.png" class="header-brand-img" alt="">
-=======
+
                         <img src="{{ url('/assets') }}/images/polindra.png" class="header-brand-img" alt="">
->>>>>>> 32bbcf44afed5acdb57e2203467748aad76fa436
+
                     </div>
                 </div>
                 <div class="container-login100">

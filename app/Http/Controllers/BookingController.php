@@ -17,7 +17,12 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        // membuat varibel untuk menyimpan data dari database 
+        $booking = Booking::with('booking')->where('id_booking')->get();
+        // dikirim ke blade lewat compact
+        $data = Booking::all();
+
+        return view('owner/pesanan/index', compact('booking','data'));
     }
 
     /**
@@ -113,5 +118,14 @@ class BookingController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function changeStatus(Request $request)
+    {
+        $pesanan = Booking::find($request->id_booking);
+        $pesanan->status = $request->status;
+        $pesanan->save();
+
+        return response()->json(['message' => 'Status pesanan berhasil diubah'], 200);
     }
 }

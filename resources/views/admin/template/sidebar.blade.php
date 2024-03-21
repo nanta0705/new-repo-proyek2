@@ -108,6 +108,12 @@
                             <i class="side-menu__icon fa fa-file"></i>
                             <span class="side-menu__label">Type Makeup</span>
                         </a>
+
+                        <a class="side-menu__item {{ Request::segment(2) == 'pesanan' ? 'active' : '' }}"
+                            data-bs-toggle="slide" href="{{ url('/booking') }}">
+                            <i class="side-menu__icon fa fa-file"></i>
+                            <span class="side-menu__label">Pesanan</span>
+                        </a>
                     </li>
                 @endcan
 
