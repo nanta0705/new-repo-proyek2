@@ -23,7 +23,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     @include('layout_landing.css.style_css')
-    <title>sibatik</title>
+    <title>gawe ayu</title>
 </head>
 
 <body>
