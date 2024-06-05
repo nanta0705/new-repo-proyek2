@@ -8,10 +8,12 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\client\ClientBookingController;
+use App\Http\Controllers\client\DiagnosaController;
 use App\Http\Controllers\DataOwnerController;
 use App\Http\Controllers\Owner\KatalogMakeupController;
 use App\Http\Controllers\Owner\TypeMakeupController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TestDiagnosaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +30,10 @@ Route::get('/', [LandingController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::resource('/register', RegisterController::class);
+Route::post('/myfeature', [DiagnosaController::class, 'sendFile'])->name('upload.file');
+Route::get('/testdiagnosa', [TestDiagnosaController::class, 'index']);
+
+
 
 Route::group(['middleware' => ['autentikasi']], function () {
 
@@ -49,7 +55,9 @@ Route::group(['middleware' => ['autentikasi']], function () {
 
 
     Route::get('/client/dashboard', [AppController::class, 'client']);
+    Route::get('/client/skindetection', [AppController::class, 'myfeature'])->name('skindetection');
     Route::resource('/client/booking', ClientBookingController::class);
+
 
 
 

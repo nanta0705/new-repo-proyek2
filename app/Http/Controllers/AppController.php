@@ -20,4 +20,9 @@ class AppController extends Controller
     {
         return view('client.dashboard');
     }
+
+    public function myfeature()
+    {
+        return view('client.pages.skindetection');
+    }
 }

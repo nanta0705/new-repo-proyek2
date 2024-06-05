@@ -24,9 +24,9 @@
         style="background-image: url('{{ url('/layout_landing') }}/images/hero/makeup1.jpg')">
         <div class="container">
             <div class="row align-items-center justify-content-center">
-                <div class="col-md-7">
+                <div class="col-md-10">
                     <div class="site-hero-contents text-center" data-aos="fade-up">
-                        <h1 class="hero-heading">asdfghjk</h1>
+                        <h1 class="hero-heading">Take care of our personality as we take care of our beauty, because our personality reflects our Dignity</h1>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-10">
                     <div class="site-hero-contents text-center" data-aos="fade-up">
-                        <h1 class="hero-heading">Sistem Peminjaman Barang Teknik Informatika</h1>
+                        <h1 class="hero-heading">Sistem Peminjaman Jasa Make-Up Teknik Informatika</h1>
                     </div>
                 </div>
             </div>

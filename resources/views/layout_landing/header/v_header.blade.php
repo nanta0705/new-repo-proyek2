@@ -1,7 +1,13 @@
 <nav class="untree_co--site-nav js-sticky-nav">
     <div class="container d-flex align-items-center">
+        <style>
+            .logo-wrap img {
+                width: 100px;
+                height: auto; /* Mempertahankan rasio aspek gambar */
+            }
+        </style>
         <div class="logo-wrap">
-            <a href="index.html" class="untree_co--site-logo">kk</a>
+            <img src="{{url('/assets')}}/images/gaweayu1.png" class="mobile-logo logo-1" alt="logo">
         </div>
         <div class="site-nav-ul-wrap text-center d-none d-lg-block">
             <ul class="site-nav-ul js-clone-nav">
@@ -33,6 +39,8 @@
                 </li> --}}
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="{{ url('/client/skindetection') }}">My Feature</a></li>
+
             </ul>
         </div>
 

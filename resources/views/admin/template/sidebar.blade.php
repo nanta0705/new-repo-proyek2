@@ -3,10 +3,10 @@
     <aside class="app-sidebar">
         <div class="side-header">
             <a class="header-brand1" href="index.html">
-                <img src="{{ url('/assets') }}/images/brand/logo.png" class="header-brand-img desktop-logo" alt="logo">
-                <img src="{{ url('/assets') }}/images/brand/logo-1.png" class="header-brand-img toggle-logo"
+                <img src="{{ url('/assets') }}/images/gaweayu1.png" class="header-brand-img desktop-logo" alt="logo">
+                <img src="{{ url('/assets') }}/images/gaweayu1.png" class="header-brand-img toggle-logo"
                     alt="logo">
-                <img src="{{ url('/assets') }}/images/brand/logo-2.png" class="header-brand-img light-logo"
+                <img src="{{ url('/assets') }}/images/gaweayu1.png" class="header-brand-img light-logo"
                     alt="logo">
                 <img src="/assets/images/gaweayu1.png" class="header-brand-img light-logo1" alt="logo">
             </a>
