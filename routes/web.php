@@ -14,6 +14,8 @@ use App\Http\Controllers\Owner\KatalogMakeupController;
 use App\Http\Controllers\Owner\TypeMakeupController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TestDiagnosaController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +34,17 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::resource('/register', RegisterController::class);
 Route::post('/myfeature', [DiagnosaController::class, 'sendFile'])->name('upload.file');
 Route::get('/testdiagnosa', [TestDiagnosaController::class, 'index']);
+Route::get('/run-main', [DiagnosaController::class, 'runMain']);
 
-
+Route::post('/uploadgambar', function (Request $request) {
+    $image = $request->file('file');
+    $response = Http::attach(
+        'file', file_get_contents($image), $image->getClientOriginalName()
+    )->post('http://127.0.0.1:8000/videocapture/');
+    // dd($request->all());
+    
+    return $response->json();
+})->name('upload.gambar');
 
 Route::group(['middleware' => ['autentikasi']], function () {
 

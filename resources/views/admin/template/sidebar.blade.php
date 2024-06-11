@@ -2,12 +2,10 @@
     <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
     <aside class="app-sidebar">
         <div class="side-header">
-            <a class="header-brand1" href="index.html">
+            <a class="header-brand1" href="/">
                 <img src="{{ url('/assets') }}/images/gaweayu1.png" class="header-brand-img desktop-logo" alt="logo">
-                <img src="{{ url('/assets') }}/images/gaweayu1.png" class="header-brand-img toggle-logo"
-                    alt="logo">
-                <img src="{{ url('/assets') }}/images/gaweayu1.png" class="header-brand-img light-logo"
-                    alt="logo">
+                <img src="{{ url('/assets') }}/images/gaweayu1.png" class="header-brand-img toggle-logo" alt="logo">
+                <img src="{{ url('/assets') }}/images/gaweayu1.png" class="header-brand-img light-logo" alt="logo">
                 <img src="/assets/images/gaweayu1.png" class="header-brand-img light-logo1" alt="logo">
             </a>
             <!-- LOGO -->
@@ -22,15 +20,12 @@
                     <h3>Main</h3>
                 </li>
                 <li class="slide">
-                    @if (Auth::user()->role_id == 1)
+                    @if (Auth::user()->role_id == 2)
                         <a class="side-menu__item {{ Request::segment(2) == 'dashboard' ? 'active' : '' }}"
-                            data-bs-toggle="slide" href="{{ url('/admin/dashboard') }}">
-                        @elseif(Auth::user()->role_id == 2)
+                            data-bs-toggle="slide" href="{{ url('/owner/dashboard') }}">
+                        @elseif(Auth::user()->role_id == 3)
                             <a class="side-menu__item {{ Request::segment(2) == 'dashboard' ? 'active' : '' }}"
-                                data-bs-toggle="slide" href="{{ url('/owner/dashboard') }}">
-                            @elseif(Auth::user()->role_id == 3)
-                                <a class="side-menu__item {{ Request::segment(2) == 'dashboard' ? 'active' : '' }}"
-                                    data-bs-toggle="slide" href="{{ url('/') }}">
+                                data-bs-toggle="slide" href="{{ url('/') }}">
                     @endif
                     <i class="side-menu__icon fe fe-home"></i><span class="side-menu__label">Dashboard</span></a>
                 </li>
@@ -85,6 +80,10 @@
                                     Mangament</a>
                             </li>
                         </ul>
+                    </li>
+                    <li>
+                        <a href="{{ url('/logout') }}"
+                            class="slide-item {{ Request::segment(2) == 'content' ? 'active' : '' }}">Logout</a>
                     </li>
                 @endcan
 

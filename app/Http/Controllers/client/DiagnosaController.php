@@ -5,6 +5,7 @@ namespace App\Http\Controllers\client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Http;
 
 class DiagnosaController extends Controller
 {
@@ -27,9 +28,9 @@ class DiagnosaController extends Controller
         Storage::delete($tmpFilePath); //Delete Setelah Deteksi Selanjutnya
 
         if ($response['httpCode'] == 200) {
-            return response()->json(['response' => json_decode($response['response'], true)], 200);
+            return redirect()->route('skindetection')->with('response', $response['response']);
         } else {
-            return response()->json(['error' => $response['error']], 400);
+            return back()->withErrors(['error' => $response['error']]);
         }
     }
 
@@ -55,5 +56,16 @@ class DiagnosaController extends Controller
             'response' => $response,
             'error' => ($httpCode != 200) ? "Remote Gagal" . $httpCode : null,
         ];
+    }
+
+    public function runMain() {
+        $remoteUrl = 'http://127.0.0.1:8000/run-main/';
+        $response = Http::get($remoteUrl);
+
+        if ($response->successful()) {
+            return response()->json(['message' => $response->json()], 200);
+        } else {
+            return response()->json(['error' => 'Failed to run main program.'], 500);
+        }
     }
 }

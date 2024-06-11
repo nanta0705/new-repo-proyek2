@@ -3,7 +3,7 @@
                         <div class="d-flex align-items-center">
                             <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0);"></a>
                             <div class="responsive-logo">
-                                <a href="index.html" class="header-logo">
+                                <a href="/" class="header-logo">
                                     <img src="{{url('/assets')}}/images/brand/logo-3.png" class="mobile-logo logo-1" alt="logo">
                                     <img src="{{url('/assets')}}/images/brand/logo.png" class="mobile-logo dark-logo-1" alt="logo">
                                 </a>

@@ -9,6 +9,9 @@
         <div class="image-container">
             <img id="captured-image" src="" alt="Captured Image">
         </div>
+        <button
+                class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-white-600 text-black hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                type="submit">Upload</button>
     </div>
 
     <style>
@@ -72,11 +75,88 @@
 
                 const dataUrl = canvas.toDataURL('image/png');
                 capturedImage.src = dataUrl;
+
+                // Encode the image data to a blob
+                fetch(dataUrl)
+                    .then(res => res.blob())
+                    .then(blob => {
+                        const formData = new FormData();
+                        formData.append('file', blob);
+
+                        // Send POST request to uploadgambar endpoint
+                        fetch('/uploadgambar/', {
+                                method: 'POST',
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                alert(`Response from server: ${JSON.stringify(data)}`);
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                alert('Failed to upload image.');
+                            });
+                    });
             });
+
         });
     </script>
 
-    <head>
+    
+        <title>Upload File</title>
+
+        <h1>Upload File</h1>
+        <form action="{{ route('upload.file') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="file" >
+            <img id="imagePreview" src="" alt="Image Preview" style="display: none; max-width: 300px;">
+            <button
+                class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-white-600 text-black hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                type="submit">Upload</button>
+        </form>
+
+        <style>
+            .foundation-images img {
+                width: 100px;
+                height: auto;
+                border: 1px solid #ccc;
+            }
+        </style>
+
+        @if (isset($message))
+            <h1>Hasil Deteksi Warna Kulit</h1>
+            <pre>{{ print_r($message, true) }}</pre>
+
+            @php
+            $foundationImages = isset($foundationImages) ? $foundationImages : [];
+            // dd($foundationImage)
+        @endphp
+    
+        @if (!empty($foundationImages))
+            <h2>Rekomendasi Foundation</h2>
+            <div class="foundation-images">
+                @foreach ($foundationImages as $foundationImage)
+                    <img src="{{ $foundationImage }}" alt="Rekomendasi Foundation">
+                @endforeach
+            </div>
+        @endif
+    
+        @if ($errors->any())
+            <div class="errors">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        @else
+            <p>No response data available.</p>
+        @endif
+
+
+    {{-- <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Upload File</title>
@@ -86,10 +166,31 @@
         <h1>Upload File</h1>
         <form action="{{ route('upload.file') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <input type="file" name="file">
+            <input type="file" name="file" id="file" accept="image/*" onchange="previewImage(event)">
+            <br><br>
+            <img id="imagePreview" src="" alt="Image Preview" style="display: none; max-width: 300px;">
+            <br><br>
             <button
                 class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-white-600 text-black hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
                 type="submit">Upload</button>
         </form>
-    </body>
+        @if (session('message'))
+            <pre>{{ print_r($message, true) }}</pre>
+        @else
+            <p>No response data available.</p>
+        @endif
+
+        <script>
+            function previewImage(event) {
+                var reader = new FileReader();
+                reader.onload = function() {
+                    var output = document.getElementById('imagePreview');
+                    output.src = reader.result;
+                    output.style.display = 'block';
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        </script>
+    </body> --}}
+
 @endsection
