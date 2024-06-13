@@ -18,7 +18,7 @@ class DiagnosaController extends Controller
         $tmpFileName = uniqid() . '.' . $file->getClientOriginalExtension();
         $tmpFilePath = $file->storeAs('tmp', $tmpFileName); // Store Ke Temp
 
-        $remoteUrl = 'http://127.0.0.1:8000/uploadgambar/';
+        $remoteUrl = 'http://10.0.175.162:8000/uploadgambar/';
         $postData = [
             'file' => new \CURLFile(storage_path('app/' . $tmpFilePath), $file->getClientMimeType(), $file->getClientOriginalName()),
         ];
@@ -28,7 +28,7 @@ class DiagnosaController extends Controller
         Storage::delete($tmpFilePath); //Delete Setelah Deteksi Selanjutnya
 
         if ($response['httpCode'] == 200) {
-            return redirect()->route('skindetection')->with('response', $response['response']);
+            return redirect()->route('skindetection')->with('response', $response['response']);//permintaan pengiriman file ke server remote berhasil 
         } else {
             return back()->withErrors(['error' => $response['error']]);
         }

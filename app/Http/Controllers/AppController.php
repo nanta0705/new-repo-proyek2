@@ -39,7 +39,7 @@ class AppController extends Controller
                 . $decodedResponse['Persentase'] . "%";
             // Tentukan rekomendasi gambar foundation berdasarkan warna kulit
                 $foundationImages = $this->getFoundationImage($decodedResponse['Warna Kulit']);
-                dd($foundationImages);
+                // dd($foundationImages);
 
                 return view('client.pages.skindetection', [
                     'message' => $message,
@@ -55,9 +55,9 @@ class AppController extends Controller
     {
         // logika penentuan gambar foundation berdasarkan warna kulit
         $images = [
-            'neutral' => ['neutral1.jpg', 'neutral2.jpg', 'neutral3.jpg', 'neutral4.jpg', 'neutral5.jpg'],
-            'cool' => ['cool1.jpg', 'cool2.jpg', 'cool3.jpg', 'cool4.jpg', 'cool5.jpg'],
-            'warm' => ['warm1.jpg', 'warm2.jpg', 'warm3.jpg', 'warm4.jpg', 'warm5.jpg'],
+            'neutral' => ['neutral1.jpg', 'neutral5.jpg', 'light netral.jpg', 'medium netral2.jpg', 'neutral tan.jpg'],
+            'cool' => ['light cool.jpg', 'light.jpg', 'medium.jpg', 'medium cool.jpg', 'medium cool3.jpg'],
+            'warm' => ['deep warm.jpg', 'rich honey.jpg', 'deep warm2.jpg', 'rich warm.jpg', 'tan warm.jpg'],
 
         ];
     
